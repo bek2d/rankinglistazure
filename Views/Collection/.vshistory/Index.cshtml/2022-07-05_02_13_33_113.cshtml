@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Collection>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row pb-3">
+    @foreach(var card in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                    <div class="card">
+                        <img src="@card.ImageUrl" class="card-img-top rounded"/>
+
+                        <div class="card-body">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-primary">@card.Title</p>
+                                <p class="card-title text-info">by <b>@card.UserId</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p>@card.Description</p>
+                            </div>
+                            <div class="pl-1">
+                                <button type="button" class="btn btn-primary" disabled>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark" viewBox="0 0 16 16">
+                                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"></path>
+                                    </svg>
+                                    Button
+                                </button>
+                             
+                                <p>@card.Topic</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Details" class="btn btn-primary form-control" asp-route-cardId="@card.CollectionId">
+                            Details
+                        </a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    }
+</div>

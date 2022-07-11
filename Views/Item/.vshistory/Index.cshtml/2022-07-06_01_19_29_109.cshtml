@@ -1,0 +1,35 @@
+﻿@model Item
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Product List</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Item" asp-action="Middleware" class="btn btn-primary" asp-route-id="@Model.Collection.CollectionId">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create
+            </a>
+          
+        </div>
+    </div>
+    <br /><br />
+
+    <table  id="tblData"  class="table table-bordered table-striped" style="width:100%">
+        <thead>
+        <tr>
+            <th>@Model.CollectionId</th>
+            <th>@Model.Id</th>
+            <th>@Model.Name</th>
+            <th></th>
+        </tr>
+        </thead>
+    </table>
+</div>
+
+@*@section Scripts{
+    <script src="~/js/product.js"></script>
+}*@

@@ -1,0 +1,62 @@
+﻿@using System.ComponentModel.DataAnnotations
+@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+@{
+    var noForeach = Model.FirstOrDefault();
+}
+    <div class="container p-3">
+        <div class="row pt-4">
+            <div class="col-6">
+                <h2 class="text-primary">Items</h2>
+            </div>
+            <div class="col-6 text-end">
+                @try
+                {
+                    <a
+                        asp-action="Middleware"
+                        class="btn btn-primary"
+                        asp-route-id="@noForeach.CollectionId">
+                        <i class="bi bi-plus-circle"></i> &nbsp; Create
+                    </a>
+                }
+                catch(Exception)
+                {
+                    
+                }
+            </div>
+        </div>
+        <br /><br />
+        
+        <table class="table table-bordered table-light" style="width: 100%">
+        <thead>
+        <tr>
+            <th>Category name</th>
+            <th>Display Order</th>
+        
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var element in Model) {
+        
+            <tr>
+                <th>@element.CollectionId</th>
+                <th>@element.Id</th>
+                <th>@element.Name</th>
+                <th></th>
+            </tr>
+            <td>
+                <div class="w-75 btn-group" role="group">
+
+                    <a asp-controller="Item" asp-action="Delete" class="btn btn-primary" asp-route-id="@element.Id">
+                        &nbsp; <i class="bi bi-currency-bitcoin"></i> Delete
+                    </a>                    
+                </div>
+            </td>
+        
+    
+        } 
+        </table>
+    </div>

@@ -1,0 +1,24 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+        <p>
+
+            <div class="mt-2">
+            <h1>By creating you agree with our agreement and policy </h1>
+            </div>
+            <div class="position-absolute start-50 mt-2">
+                <a id="confirm-link" href="/">
+                    <h2>Accept</h2></a>
+            </div>
+        </p>
+    }
+   
+}
+

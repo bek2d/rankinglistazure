@@ -1,0 +1,72 @@
+﻿@using System.ComponentModel.DataAnnotations
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="col-6 text-end mt-5">
+@foreach (var element in Model)
+{
+@if (element.Owner == @UserManager.GetUserName(User))
+    {
+        <a asp-controller="Item" asp-action="Middleware" asp-route-id="@ViewBag.Value" class="btn btn-primary">
+            &nbsp; Add new item
+        </a>
+    }
+    break;
+}
+</div>
+        
+        
+<table class="table table-bordered table-light" style="width: 100%">
+    <thead>
+    <tr>
+       
+        <th>Name</th>
+       
+        
+    </tr>
+    </thead>
+    <tbody>
+    <br /><br /> 
+    @foreach (var element in Model)
+    {
+        
+            
+        
+        <tr>
+            
+            <th>@element.Name</th>
+            
+            
+            <th>
+            <div class="w-20 btn-group" role="group">
+                @if (@element.Owner == @UserManager.GetUserName(User))
+                {
+                    <a asp-controller="Item" asp-action="Delete" class="btn btn-primary" asp-route-id="@element.Id">
+                        &nbsp; Delete
+                    </a>
+                }
+
+
+
+            </div>
+            </th>
+           
+
+        </tr>
+
+
+            
+    } 
+</table>
+
+

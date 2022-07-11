@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Collection>
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="row pb-3">
+    @foreach(var card in Model)
+    {
+        <div class="col-lg-3 col-md-6">
+            <div class="row p-2">
+                <div class="col-12 p-1" style="border:1px solid #008cba; border-radius: 5px;">
+                    <div class="card">
+                        <img src="@card.ImageUrl" class="card-img-top rounded"/>
+
+                        <div class="card-body">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-primary">@card.Title</p>
+                                <p class="card-title text-info">by <b>@card.UserId</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p>@card.Description</p>
+                            </div>
+                            <div class="pl-1 text-primary">
+                                Topic:
+                                <button type="button" class="rounded-pill">
+                                    @card.Topic
+                                </button>
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <a asp-action="Open" class="btn btn-primary form-control" asp-route-cardId="@card.CollectionId">
+                            Open
+                        </a>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    }
+</div>

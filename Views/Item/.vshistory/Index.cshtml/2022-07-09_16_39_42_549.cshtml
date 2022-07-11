@@ -1,0 +1,44 @@
+﻿@using System.ComponentModel.DataAnnotations
+@model IEnumerable<Item>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<a asp-controller="Item" asp-action="Create" asp-route-id="" class="btn btn-primary">
+    &nbsp;  Create New Category
+</a>
+     
+        <br /><br />
+        
+        <table class="table table-bordered table-light" style="width: 100%">
+        <thead>
+        <tr>
+            <th>Category name</th>
+            <th>Display Order</th>
+        
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var element in Model) {
+        
+            <tr>
+                <th>@element.CollectionId</th>
+                <th>@element.Id</th>
+                <th>@element.Name</th>
+              
+                <td>
+                    <div class="w-75 btn-group" role="group">
+
+                        <a asp-controller="Item" asp-action="Delete" class="btn btn-primary" asp-route-id="@element.Id">
+                            &nbsp;  Delete
+                        </a>                    
+                    </div>
+                </td>
+                
+            </tr>
+            
+        
+    
+        } 
+        </table>
+ 

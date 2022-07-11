@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Collection>
+@using Microsoft.AspNetCore.Identity
+
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@foreach (var card in Model){
+@if (@card.Owner = @UserManager.GetUserName(User)){
+    
+    }
+    }

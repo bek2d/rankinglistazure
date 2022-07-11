@@ -1,0 +1,43 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model IEnumerable<Collection>
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@foreach (var card in Model){
+@if (@card.Owner == @UserManager<>.GetUserName(User)){
+    <div class="col-lg-3 col-md-6">
+        <div class="row p-2">
+            <div
+                class="col-12 p-1"
+                style="border: 1px solid #008cba; border-radius: 5px"
+            >
+                <div class="card">
+                    <img src="@card.ImageUrl" class="card-img-top rounded" />
+
+                    <div class="card-body">
+                        <div class="pl-1">
+                            <p class="card-title h5 text-primary">@card.Title</p>
+                            <p>@card.Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a
+                        asp-action="Open"
+                        class="btn btn-primary form-control"
+                        asp-route-id="@card.Id"
+                    >
+                        Open
+                    </a>
+                 
+                        <a asp-controller="Collection" asp-action="Delete" class="btn btn-primary mt-2" asp-route-id="@card.Id">
+                            &nbsp;  Delete
+                        </a> 
+                    
+                           
+                </div>
+            </div>
+        </div>
+    }
+    }

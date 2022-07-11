@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Collection>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<tbody>
+@foreach (var obj in Model)
+{
+    <tr>
+        <td width ="50%">
+            @obj.Title
+        </td>
+        <td width ="30%">
+            @obj.Likes
+        </td>
+</tbody>}
